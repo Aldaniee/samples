@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart' as intl;
 
 class FormWidgetsDemo extends StatefulWidget {
@@ -21,6 +22,31 @@ class _FormWidgetsDemoState extends State<FormWidgetsDemo> {
   bool? brushedTeeth = false;
   bool enableFeature = false;
 
+  @override
+  void initState() {
+    super.initState();
+    _unlockOrientation();
+  }
+
+  Future<void> _unlockOrientation() async {
+    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  Future<void> _setOrientationToPortrait() async {
+    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+  @override
+  void dispose() {
+    _setOrientationToPortrait();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

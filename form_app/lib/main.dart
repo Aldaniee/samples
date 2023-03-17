@@ -6,6 +6,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:window_size/window_size.dart';
 
@@ -15,8 +16,14 @@ import 'src/http/mock_client.dart';
 import 'src/sign_in_http.dart';
 import 'src/validation.dart';
 
-void main() {
+const List<DeviceOrientation> kPortraitOrientations = <DeviceOrientation>[
+  DeviceOrientation.portraitDown,
+  DeviceOrientation.portraitUp,
+];
+void main() async {
   setupWindow();
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(kPortraitOrientations);
   runApp(const FormApp());
 }
 
