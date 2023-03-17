@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart' as intl;
@@ -31,7 +33,14 @@ class _FormWidgetsDemoState extends State<FormWidgetsDemo> {
   Future<void> _unlockOrientation() async {
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
       DeviceOrientation.landscapeLeft,
+      //DeviceOrientation.landscapeRight,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+      DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
+      DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
   }
@@ -39,12 +48,18 @@ class _FormWidgetsDemoState extends State<FormWidgetsDemo> {
   Future<void> _setOrientationToPortrait() async {
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
       DeviceOrientation.portraitDown,
+      //DeviceOrientation.landscapeLeft,
+      //DeviceOrientation.landscapeRight,
+      //DeviceOrientation.portraitUp,
+    ]);
+    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+      DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
   }
   @override
   void dispose() {
-    _setOrientationToPortrait();
+    unawaited(_setOrientationToPortrait());
     super.dispose();
   }
   @override
