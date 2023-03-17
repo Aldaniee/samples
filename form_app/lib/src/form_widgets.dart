@@ -33,12 +33,6 @@ class _FormWidgetsDemoState extends State<FormWidgetsDemo> {
   Future<void> _unlockOrientation() async {
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
       DeviceOrientation.landscapeLeft,
-      //DeviceOrientation.landscapeRight,
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.portraitUp,
-    ]);
-    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-      DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
@@ -48,9 +42,6 @@ class _FormWidgetsDemoState extends State<FormWidgetsDemo> {
   Future<void> _setOrientationToPortrait() async {
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
       DeviceOrientation.portraitDown,
-      //DeviceOrientation.landscapeLeft,
-      //DeviceOrientation.landscapeRight,
-      //DeviceOrientation.portraitUp,
     ]);
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
       DeviceOrientation.portraitDown,
